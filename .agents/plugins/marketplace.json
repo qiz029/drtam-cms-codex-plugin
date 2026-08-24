@@ -1,0 +1,20 @@
+{
+  "name": "drtam",
+  "interface": {
+    "displayName": "Dr Tam"
+  },
+  "plugins": [
+    {
+      "name": "drtam-cms",
+      "source": {
+        "source": "local",
+        "path": "./plugins/drtam-cms"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

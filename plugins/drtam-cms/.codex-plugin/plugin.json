@@ -1,0 +1,44 @@
+{
+  "name": "drtam-cms",
+  "version": "0.1.0",
+  "description": "Use Codex to safely read and edit Dr Tam CMS drafts through the official device-authorized CLI.",
+  "author": {
+    "name": "Dr Tam Medical Spa Clinic",
+    "email": "info@drtam-medspa.com",
+    "url": "https://drtam-medspa-clinic.com"
+  },
+  "homepage": "https://drtam-medspa-clinic.com",
+  "repository": "https://github.com/qiz029/drtam-cms-codex-plugin",
+  "license": "Apache-2.0",
+  "keywords": [
+    "cms",
+    "content",
+    "journal",
+    "media",
+    "translation"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Dr Tam CMS",
+    "shortDescription": "Read and edit CMS drafts with administrator-approved access.",
+    "longDescription": "Connect Codex to Dr Tam CMS through the official public CLI. Work with Journal and website drafts, Media, treatment categories, and translations while keeping publishing, deletion, review decisions, and social delivery with authorized administrators.",
+    "developerName": "Dr Tam Medical Spa Clinic",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write",
+      "Media"
+    ],
+    "websiteURL": "https://drtam-medspa-clinic.com",
+    "privacyPolicyURL": "https://drtam-medspa-clinic.com/privacy/",
+    "termsOfServiceURL": "https://github.com/qiz029/drtam-cms-codex-plugin/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "Connect this computer to Dr Tam CMS.",
+      "Show me the latest Journal drafts.",
+      "Help me update a CMS draft."
+    ],
+    "brandColor": "#14211F",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  }
+}

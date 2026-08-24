@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dr Tam CMS"
+  short_description: "Connect and edit Dr Tam CMS drafts safely"
+  default_prompt: "Use $drtam-cms to connect this computer and help me update a CMS draft."
