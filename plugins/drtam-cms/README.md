@@ -8,6 +8,56 @@ The source is public under the Apache License 2.0. Installing the plugin does
 not grant CMS access: every computer must receive administrator-approved Device
 Access before it can read or edit clinic content.
 
+## Fastest install: ask your Codex agent
+
+Send this message to a Codex agent running on the computer where you want to
+use the plugin:
+
+> Read the Dr Tam CMS plugin installation guide at
+> https://raw.githubusercontent.com/qiz029/drtam-cms-codex-plugin/main/plugins/drtam-cms/README.md
+> and install the plugin on this computer. You may run the documented `codex
+> plugin` commands. Verify the installed plugin, then tell me when I should
+> restart the Codex app. Do not request CMS Device Access yet.
+
+The agent should:
+
+1. Confirm that the `codex` CLI is available.
+2. Run `codex plugin marketplace list` and check for the `drtam` marketplace.
+3. If it is missing, run:
+
+   ```bash
+   codex plugin marketplace add qiz029/drtam-cms-codex-plugin --ref main
+   ```
+
+4. Install or reinstall the plugin:
+
+   ```bash
+   codex plugin add drtam-cms@drtam
+   ```
+
+5. Run `codex plugin list` and verify that `drtam-cms@drtam` is shown as
+   `installed, enabled`.
+6. Tell the user to restart the Codex app and begin a new conversation.
+
+Installing the plugin is separate from connecting it to Dr Tam CMS. During
+installation, the agent must not ask for, read, or copy API keys, passwords,
+Device Codes, or CMS credentials. Device Access begins only when the user later
+asks to connect the computer.
+
+## Use in the Codex app
+
+The Codex app and Codex CLI use the same plugin installation on a computer.
+After the marketplace and plugin commands above finish:
+
+1. Quit and reopen the Codex app.
+2. Open Plugins and select the **Dr Tam** marketplace if you want to inspect the
+   installed plugin.
+3. Verify that **Dr Tam CMS** is installed and enabled.
+4. Start a new conversation before asking Codex to use it.
+
+If the agent in the app cannot run local commands, run the commands below once
+in Terminal, then restart the app.
+
 ## User flow
 
 1. Install the plugin from the Dr Tam marketplace.
@@ -23,7 +73,7 @@ in the operating-system credential store. It can manage non-destructive drafts,
 Media, treatment categories, and translations. It cannot publish, delete,
 approve clinical review, manage channels, or deliver social posts.
 
-## Install in Codex
+## Install manually
 
 From a machine with Codex installed:
 
