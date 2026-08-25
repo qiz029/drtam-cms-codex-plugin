@@ -69,7 +69,8 @@ in Terminal, then restart the app.
    verifies the granted scope.
 
 The resulting 30-day `cms:editor` credential is revocable and stored by the CLI
-in the operating-system credential store. It can manage non-destructive drafts,
+in the operating-system credential store. It can list, read, create, and update
+Journal and Treatment drafts; edit Homepage and Business drafts; and manage
 Media, treatment categories, and translations. It cannot publish, delete,
 approve clinical review, manage channels, or deliver social posts.
 

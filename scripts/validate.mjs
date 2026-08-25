@@ -35,6 +35,28 @@ assert.equal(entry.policy.authentication, "ON_USE");
 const skill = await read("plugins/drtam-cms/skills/drtam-cms/SKILL.md");
 assert.match(skill, /^---\nname: drtam-cms\n/);
 assert.doesNotMatch(skill, /\[TODO:/);
+for (const command of [
+  "journal list",
+  "journal get",
+  "journal create",
+  "journal update",
+  "treatment list",
+  "treatment get",
+  "treatment create",
+  "treatment update",
+]) {
+  assert.ok(skill.includes(`drtam-cms ${command}`), `Skill must document ${command}`);
+}
+
+assert.equal(await read("README.md"), await read("plugins/drtam-cms/README.md"));
+assert.equal(
+  await read("submission/listing.md"),
+  await read("plugins/drtam-cms/submission/listing.md"),
+);
+assert.equal(
+  await read("submission/test-cases.md"),
+  await read("plugins/drtam-cms/submission/test-cases.md"),
+);
 
 for (const required of ["LICENSE", "NOTICE", "README.md", "SUPPORT.md", "TERMS.md"]) {
   await access(path.join(root, required));

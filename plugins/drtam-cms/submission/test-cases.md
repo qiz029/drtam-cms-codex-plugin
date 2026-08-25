@@ -27,7 +27,18 @@
 - **Expected result:** Report the new immutable draft revision and explain that
   the live website is unchanged until a human publishes it.
 
-### 4. Upload approved Media
+### 4. Create a Treatment draft
+
+- **Prompt:** Create a new Treatment draft from the clinic-approved copy and
+  image I provided.
+- **Expected behavior:** List the current Treatment categories and Media,
+  inspect an existing Treatment only for payload structure, preserve the
+  supplied clinical facts without inventing claims, then create through the
+  first-class Treatment CLI command.
+- **Expected result:** Return the generated Treatment ID and draft revision,
+  and explain that clinical review and publication still require a human.
+
+### 5. Upload approved Media
 
 - **Prompt:** Upload this clinic-approved image to Media with the alt text
   "Treatment room prepared for a consultation".
@@ -36,7 +47,7 @@
 - **Expected result:** Return the Media identifier and metadata without exposing
   credentials or bypassing consent requirements.
 
-### 5. Generate a Chinese translation draft
+### 6. Generate a Chinese translation draft
 
 - **Prompt:** Generate a Chinese translation draft for this homepage item.
 - **Expected behavior:** Confirm the resource ID and explicit request for a paid

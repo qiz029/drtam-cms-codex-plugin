@@ -1,6 +1,6 @@
 ---
 name: drtam-cms
-description: Use the official Dr Tam CMS CLI for administrator-approved access to read and edit CMS drafts, upload Media, and manage translation drafts. Use when an agent needs to connect to or edit the Dr Tam CMS. Publishing, review decisions, deletion, channel management, and social delivery remain excluded.
+description: Use the official Dr Tam CMS CLI for administrator-approved access to create and edit CMS drafts, upload Media, and manage translation drafts. Use when an agent needs to connect to or edit the Dr Tam CMS. Publishing, review decisions, deletion, channel management, and social delivery remain excluded.
 ---
 
 # Dr Tam CMS
@@ -51,15 +51,30 @@ Journal:
 - `drtam-cms journal create --input <payload.json> --json`
 - `drtam-cms journal update <post-id> --input <payload.json> --json`
 
-Homepage, Business, and Treatment content:
+Treatment:
+
+- `drtam-cms treatment list --json`
+- `drtam-cms treatment get <item-id> --json`
+- `drtam-cms treatment create --input <payload.json> --json`
+- `drtam-cms treatment update <item-id> --input <payload.json> --json`
+
+Before creating a Treatment, list categories and Media, then build a complete
+Treatment payload with an existing category name, a valid image Media ID and
+its matching public Media URL, accurate alternative text, patient-facing copy,
+sections, FAQ, cases, and SEO fields. Use an existing Treatment returned by
+`treatment get` as the structural reference, but do not copy its claims or
+clinical facts into the new Treatment unless the user supplied and approved
+them. The CLI generates the new Treatment resource ID and returns it.
+
+Homepage and Business content:
 
 - `drtam-cms content list --json`
 - `drtam-cms content get <item-id> --json`
 - `drtam-cms content update <item-id> --input <payload.json> --json`
 
-Do not guess resource IDs. An update creates a new immutable draft revision and
-may clear a previous approval; it does not change the live static website until
-a human publishes.
+Do not guess existing resource IDs. A create saves only a new draft. An update
+creates a new immutable draft revision and may clear a previous approval; none
+of these commands changes the live static website until a human publishes.
 
 ## Media and taxonomy
 
