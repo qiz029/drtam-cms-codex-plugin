@@ -38,7 +38,16 @@
 - **Expected result:** Return the generated Treatment ID and draft revision,
   and explain that clinical review and publication still require a human.
 
-### 5. Upload approved Media
+### 5. Pin a Journal draft
+
+- **Prompt:** Pin the Journal post I selected so it appears first.
+- **Expected behavior:** Retrieve the current Post through the CLI, preserve its
+  complete payload, and run the first-class `journal pin` command with the
+  current revision precondition.
+- **Expected result:** Report the new immutable draft revision and explain that
+  the public order changes only after human review and website publication.
+
+### 6. Upload approved Media
 
 - **Prompt:** Upload this clinic-approved image to Media with the alt text
   "Treatment room prepared for a consultation".
@@ -47,7 +56,7 @@
 - **Expected result:** Return the Media identifier and metadata without exposing
   credentials or bypassing consent requirements.
 
-### 6. Generate a Chinese translation draft
+### 7. Generate a Chinese translation draft
 
 - **Prompt:** Generate a Chinese translation draft for this homepage item.
 - **Expected behavior:** Confirm the resource ID and explicit request for a paid

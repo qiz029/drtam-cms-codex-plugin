@@ -1,6 +1,6 @@
 ---
 name: drtam-cms
-description: Use the official Dr Tam CMS CLI for administrator-approved access to create and edit CMS drafts, upload Media, and manage translation drafts. Use when an agent needs to connect to or edit the Dr Tam CMS. Publishing, review decisions, deletion, channel management, and social delivery remain excluded.
+description: Use the official Dr Tam CMS CLI for administrator-approved access to create and edit CMS drafts, manage Product Brands, upload Media, and manage translation drafts. Use when an agent needs to connect to or edit the Dr Tam CMS. Publishing, review decisions, deletion, channel management, and social delivery remain excluded.
 ---
 
 # Dr Tam CMS
@@ -39,10 +39,11 @@ browser session.
 
 ## Work with drafts
 
-Use a temporary JSON file for write commands. The file contains the bare CMS
-payload, not a wrapper with a `payload` property. Start from the latest object
-returned by the matching `get` command, preserve fields the user did not ask to
-change, and let the CLI apply the current revision precondition.
+Use a temporary JSON file for write commands that accept `--input`. The file
+contains the bare CMS payload, not a wrapper with a `payload` property. Start
+from the latest object returned by the matching `get` command, preserve fields
+the user did not ask to change, and let the CLI apply the current revision
+precondition.
 
 Journal:
 
@@ -50,6 +51,42 @@ Journal:
 - `drtam-cms journal get <post-id> --json`
 - `drtam-cms journal create --input <payload.json> --json`
 - `drtam-cms journal update <post-id> --input <payload.json> --json`
+- `drtam-cms journal pin <post-id> --json`
+- `drtam-cms journal unpin <post-id> --json`
+
+Pinning is a draft edit. The CLI preserves the complete current payload and
+sets only its `pinned` flag under the current revision precondition. Multiple
+pinned Posts appear first on the Journal page and remain newest-first within
+the pinned group. Pinning never bypasses review, publication, Promotion dates,
+or the immutable website snapshot; tell the user when administrator review and
+website publication are still required.
+
+A Journal may include one optional video in addition to its required cover
+image. Upload an approved H.264 MP4 first, then use the returned Media ID and
+matching public Media URL in the payload:
+
+```json
+{
+  "video": {
+    "mediaId": "media_example",
+    "video": "https://cms-api.drtam-medspa-clinic.com/media/media_example",
+    "altText": "Accurate description of the short video",
+    "transcript": "Accurate description of visible text and meaningful action",
+    "speech": "none"
+  }
+}
+```
+
+The video must be no larger than 25 MB and must use the shared social profile:
+4–15 seconds, vertical 9:16, at least 540×960, 23–60 FPS, H.264 Baseline/Main
+4:2:0 with square pixels, and AAC-LC when audio is present. Keep the cover
+image: it remains the public poster, Journal listing thumbnail, and fallback
+when no video is selected. Journal video cannot contain speech that needs
+synchronized captions; set `speech` to `none` only after checking the asset.
+Include an accurate transcript of visible text and meaningful action; it is
+displayed below the public player. A Device Access draft cannot publish the website or
+send the video to social channels; an authorized administrator must review and
+confirm each delivery in the CMS.
 
 Treatment:
 
@@ -75,6 +112,27 @@ Homepage and Business content:
 Do not guess existing resource IDs. A create saves only a new draft. An update
 creates a new immutable draft revision and may clear a previous approval; none
 of these commands changes the live static website until a human publishes.
+
+Product Brands:
+
+- `drtam-cms products list --json`
+- `drtam-cms products update --input <brands.json> --json`
+
+The update file is a bare JSON array of complete Product Brand objects. Start
+from the `brands` array returned by `products list`, preserve every brand and
+field the user did not ask to change, and edit only the requested values or
+ordering. Set `active` to `false` when a user wants to hide a brand without
+destroying its configuration. The CLI updates only the Product Brands field
+and binds the write to the current immutable Business revision; it does not
+overwrite address, phone, hours, or social-profile data. This saves a Business
+draft revision and does not change the live Product page until a human
+publishes the website.
+
+For a brand image, list or upload approved image Media first. Preserve the
+Media ID, its matching public `/media/<id>` URL, accurate `imageAlt`, and the
+Media focal point in the Product Brand object. Do not invent external image
+URLs, copy vendor imagery without approval, or omit alternative text. Clearing
+all image fields deliberately keeps that brand's public card text-only.
 
 ## Media and taxonomy
 

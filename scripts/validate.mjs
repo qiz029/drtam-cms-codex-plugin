@@ -40,6 +40,8 @@ for (const command of [
   "journal get",
   "journal create",
   "journal update",
+  "journal pin",
+  "journal unpin",
   "treatment list",
   "treatment get",
   "treatment create",
