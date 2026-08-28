@@ -15,8 +15,8 @@
 
 Connect Codex to Dr Tam CMS through the official public CLI. Authorized team
 members can create, update, pin, and unpin Journal drafts; create and update
-Treatment drafts; edit Homepage and Business drafts; and work with Media,
-treatment categories, and translations.
+Treatment and Gallery Album drafts; edit Homepage and Business drafts; and work
+with Media, treatment categories, and translations.
 Publishing, deletion, clinical review decisions, channel
 administration, and social delivery remain with authorized human administrators.
 
@@ -24,11 +24,11 @@ administration, and social delivery remain with authorized human administrators.
 
 1. Connect this computer to Dr Tam CMS.
 2. Show me the latest Journal drafts.
-3. Create a new Treatment draft.
+3. Create a new Gallery Album draft.
 
-## Initial release notes
+## Release notes
 
-Adds first-class Journal and Treatment draft workflows, including Journal
-pinning, through administrator-approved, revocable Device Access. The Plugin
-does not include an MCP server or browser hooks, and it cannot publish, delete,
-approve review, or deliver social posts.
+Adds first-class Gallery Album draft and translation workflows alongside
+Journal and Treatment, through administrator-approved, revocable Device Access.
+The Plugin does not include an MCP server or browser hooks, and it cannot
+publish, delete, approve review, or deliver social posts.

@@ -46,6 +46,10 @@ for (const command of [
   "treatment get",
   "treatment create",
   "treatment update",
+  "album list",
+  "album get",
+  "album create",
+  "album update",
 ]) {
   assert.ok(skill.includes(`drtam-cms ${command}`), `Skill must document ${command}`);
 }

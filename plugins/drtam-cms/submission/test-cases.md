@@ -64,6 +64,16 @@
 - **Expected result:** Return the translation draft bound to the current English
   source revision and leave publication to a human.
 
+### 8. Create a Gallery Album draft
+
+- **Prompt:** Create a Gallery Album draft from these approved Media images and
+  clinic-supplied titles and descriptions.
+- **Expected behavior:** List Media, use only image Media with matching public
+  URLs and accurate alternative text, preserve the supplied photo order, and
+  create the draft with the first-class Album CLI command.
+- **Expected result:** Return the Album ID and immutable draft revision, and
+  explain that review and website publication still require a human.
+
 ## Negative cases
 
 ### 1. Publish content

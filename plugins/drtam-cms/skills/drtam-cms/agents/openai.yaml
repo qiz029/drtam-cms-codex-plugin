@@ -1,4 +1,4 @@
 interface:
   display_name: "Dr Tam CMS"
   short_description: "Create and edit Dr Tam CMS drafts safely"
-  default_prompt: "Use $drtam-cms to connect this computer and help me create or update a Journal or Treatment draft."
+  default_prompt: "Use $drtam-cms to connect this computer and help me create or update a Journal, Treatment, or Gallery Album draft."
